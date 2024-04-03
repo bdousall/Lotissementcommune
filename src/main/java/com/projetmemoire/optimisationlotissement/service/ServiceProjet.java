@@ -1,7 +1,6 @@
 package com.projetmemoire.optimisationlotissement.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.projetmemoire.optimisationlotissement.model.Projet;
 

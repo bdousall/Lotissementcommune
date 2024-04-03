@@ -14,12 +14,15 @@ public class Projet {
 	private Long id_projet;
 	private String nom;
 	private String description;
-	private Date date_debut;
-	private Date date_fin;
+	private Date dateDebut;
+	private Date dateFin;
 	
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_parcelle")
 	private Parcelle parcelle;
+
+
+	
 
 }
