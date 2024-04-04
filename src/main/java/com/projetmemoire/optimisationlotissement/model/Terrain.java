@@ -21,8 +21,8 @@ public class Terrain {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id_terrain;
-	private String supperficie;;
-	private String coordonnee;
+	private double supperficie;
+	private double coordonnee;
 	@OneToMany(mappedBy="terrain",cascade= CascadeType.ALL,orphanRemoval=true)
 	private Set<Parcelle> parcelles=new HashSet<>();
 	
