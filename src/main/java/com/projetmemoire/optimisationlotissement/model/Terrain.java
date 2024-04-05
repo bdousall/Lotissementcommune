@@ -3,6 +3,8 @@ package com.projetmemoire.optimisationlotissement.model;
 import java.util.HashSet;
 import java.util.Set;
 
+
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,9 +22,12 @@ import lombok.NoArgsConstructor;
 public class Terrain {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 	private Long id_terrain;
 	private double supperficie;
-	private double coordonnee;
+	private double longitude;
+	private double latitude;
+	
 	@OneToMany(mappedBy="terrain",cascade= CascadeType.ALL,orphanRemoval=true)
 	private Set<Parcelle> parcelles=new HashSet<>();
 	
