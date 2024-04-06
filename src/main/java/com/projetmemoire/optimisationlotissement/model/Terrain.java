@@ -24,7 +24,7 @@ public class Terrain {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	
 	private Long id_terrain;
-	private double supperficie;
+	private double superficie;
 	private double longitude;
 	private double latitude;
 	

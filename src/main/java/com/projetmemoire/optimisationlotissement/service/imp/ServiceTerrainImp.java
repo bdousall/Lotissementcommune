@@ -31,7 +31,7 @@ public class ServiceTerrainImp implements serviceTerrain{
     @Override
     public Terrain updateTerrain(Terrain terrain, Long id){
         Terrain terrainExistant=TerrainParId(id);
-        terrainExistant.setSupperficie(terrain.getSupperficie());
+        terrainExistant.setSuperficie(terrain.getSuperficie());
         terrainExistant.setLatitude(terrain.getLatitude());
         terrainExistant.setLongitude(terrain.getLongitude());
         return terrainRepository.save(terrainExistant);

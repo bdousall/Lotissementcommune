@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.2.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.projetmemoire</groupId>
 	<artifactId>optimisationlotissement</artifactId>
@@ -77,7 +77,7 @@
 		<dependency>
     		 <groupId>org.hibernate</groupId>
     		 <artifactId>hibernate-spatial</artifactId>
-    		 <version>5.4.31.Final</version>
+    		 <version>5.6.3.Final</version>
 		</dependency>
 		<dependency>
    			 <groupId>org.locationtech.jts</groupId>

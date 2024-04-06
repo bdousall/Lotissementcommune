@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.projetmemoire.optimisationlotissement.model.Projet;
-import com.projetmemoire.optimisationlotissement.model.Terrain;
-import com.projetmemoire.optimisationlotissement.service.imp.ServiceParcelleImp;
+
 import com.projetmemoire.optimisationlotissement.service.imp.ServiceProjetImp;
-import com.projetmemoire.optimisationlotissement.service.imp.ServiceTerrainImp;
+
 
 public class ProjetController {
 	
