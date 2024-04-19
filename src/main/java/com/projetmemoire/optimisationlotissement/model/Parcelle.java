@@ -4,6 +4,9 @@ package com.projetmemoire.optimisationlotissement.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.geom.Polygon;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,6 +34,12 @@ public class Parcelle {
 	@OneToMany(mappedBy="parcelle",cascade=CascadeType.ALL, orphanRemoval=true)
 	@EqualsAndHashCode.Exclude
 	private Set<Infrastructure> infrastructures=new HashSet<>();
+
+	@Column(columnDefinition = "geometry(Polygon,4326)")
+	private Polygon geom;
+
+	@Column(columnDefinition = "geometry(Point,4326)")
+	private Point emplacement;
 
 
 }

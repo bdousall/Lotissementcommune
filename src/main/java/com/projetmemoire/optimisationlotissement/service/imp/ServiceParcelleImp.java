@@ -2,6 +2,7 @@ package com.projetmemoire.optimisationlotissement.service.imp;
 
 import java.util.List;
 
+import org.locationtech.jts.geom.Geometry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,8 @@ public class ServiceParcelleImp implements ServiceParcelle{
         Parcelle parcelleExistant=ParcelleParId(id);
         parcelleExistant.setSup_parcelle(parcelle.getSup_parcelle());
         parcelleExistant.setStatut(parcelle.getStatut());
+        parcelleExistant.setGeom(parcelle.getGeom());
+        parcelleExistant.setEmplacement(parcelle.getEmplacement());
         return parcelleRepository.save(parcelleExistant);
     }
 
@@ -42,5 +45,15 @@ public class ServiceParcelleImp implements ServiceParcelle{
     public void deleteParcelle(Long id){
         parcelleRepository.deleteById(id);
     }
+    @Override
+    public List<Parcelle> findParcellesWithin(Geometry polygon){
+        return parcelleRepository.ParcelledanslePolygon(polygon);
+    }
+
+    @Override
+    public List<Parcelle> findParcellesNearPoint(Geometry point, double distance){
+        return parcelleRepository.DistanceParcelle(point, distance);
+    }
+
 
 }

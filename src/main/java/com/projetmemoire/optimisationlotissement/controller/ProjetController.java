@@ -20,37 +20,35 @@ public class ProjetController {
 	
 	
 	@Autowired
-	private ServiceProjetImp projetS;
-	
-	@GetMapping
-	public List<Projet> getAllProjet(){
-		
-		return projetS.TotalProjet();
-		
-	}
-	
-	@GetMapping ("/{id}")
-	public Projet getProjetById(@PathVariable Long id) {
-		return projetS.ProjetparId(id);
-		
-	}
-	
-	@PostMapping
-	 public Projet createProjet(@RequestBody Projet projet) {
-        return projetS.EnregistrerProjet(projet);
+    private ServiceProjetImp projetService;
+
+    @GetMapping
+    public List<Projet> getAllProjets() {
+        return projetService.TotalProjet();
     }
-	
-	@PutMapping("/{id}")
-	public Projet updatProjet(@PathVariable Long id, @RequestBody Projet projetDetail) {
-		return projetS.updateProjet(projetDetail, id);
-		
-	}
-	
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteProjet(@PathVariable Long id){
-		projetS.deleteProjet(id);
-		return ResponseEntity.ok().build();
-		
-	}
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Projet> getProjetById(@PathVariable Long id) {
+        Projet projet = projetService.ProjetparId(id);
+        return projet != null ? ResponseEntity.ok(projet) : ResponseEntity.notFound().build();
+    }
+
+    @PostMapping
+    public ResponseEntity<Projet> createProjet(@RequestBody Projet projet) {
+        Projet createdProjet = projetService.EnregistrerProjet(projet);
+        return ResponseEntity.ok(createdProjet);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Projet> updateProjet(@PathVariable Long id, @RequestBody Projet projetDetails) {
+        Projet updatedProjet = projetService.updateProjet(projetDetails, id);
+        return ResponseEntity.ok(updatedProjet);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProjet(@PathVariable Long id) {
+        projetService.deleteProjet(id);
+        return ResponseEntity.ok().build();
+    }
 
 }

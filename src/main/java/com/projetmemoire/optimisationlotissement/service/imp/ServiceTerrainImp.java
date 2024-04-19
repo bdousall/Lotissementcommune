@@ -2,8 +2,10 @@ package com.projetmemoire.optimisationlotissement.service.imp;
 
 import java.util.List;
 
+import org.locationtech.jts.geom.Geometry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.projetmemoire.optimisationlotissement.model.Terrain;
 import com.projetmemoire.optimisationlotissement.repository.TerrainRepository;
@@ -40,6 +42,15 @@ public class ServiceTerrainImp implements serviceTerrain{
     @Override
     public void deleteTerrain(Long id){
         terrainRepository.deleteById(id);
+    }
+     @Override
+    public List<Terrain> findParcellesWithin(Geometry polygon){
+        return terrainRepository.TerraindanslePolygon(polygon);
+    }
+
+    @Override
+    public List<Terrain> findParcellesNearPoint(Geometry point, double distance){
+        return terrainRepository.DistanceTerrain(point, distance);
     }
 
 

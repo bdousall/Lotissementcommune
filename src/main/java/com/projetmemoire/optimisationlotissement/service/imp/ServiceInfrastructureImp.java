@@ -2,6 +2,9 @@ package com.projetmemoire.optimisationlotissement.service.imp;
 
 import java.util.List;
 
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.Point;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +16,10 @@ public class ServiceInfrastructureImp implements ServiceInfrastructure{
      @Autowired
     private InfrastructureRepository infRepository;
 
-    @Override
+    @Override 
     public Infrastructure Enregistrerinf(Infrastructure Inf){
         return infRepository.save(Inf);
-    }
+    } 
 
     @Override
     public List<Infrastructure> TotalInf(){
@@ -41,5 +44,21 @@ public class ServiceInfrastructureImp implements ServiceInfrastructure{
     public void deleteInfrastructure(Long id){
         infRepository.deleteById(id);
     }
+
+    @Override
+    public List<Infrastructure> findInfrastructuresWithinDistance(Point point, double distance){
+        String po="POINT("+point.getX()+" "+point.getY()+ ")";
+        return infRepository.DistanceInf(po, distance);
+    }
+    private GeometryFactory geometryFactory = new GeometryFactory();
+    public Point createPoint(double latitude, double longitude) {
+        return geometryFactory.createPoint(new Coordinate(longitude, latitude));
+    }
+
+    @Override
+    public List<Infrastructure> findInfrastructuresByPolygon(String polygon){
+        return infRepository.InfdansPolygon(polygon);
+    }
+
 
 }

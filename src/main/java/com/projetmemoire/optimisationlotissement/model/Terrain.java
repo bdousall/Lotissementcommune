@@ -3,9 +3,10 @@ package com.projetmemoire.optimisationlotissement.model;
 import java.util.HashSet;
 import java.util.Set;
 
-
+import org.locationtech.jts.geom.Polygon;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,6 +31,7 @@ public class Terrain {
 	
 	@OneToMany(mappedBy="terrain",cascade= CascadeType.ALL,orphanRemoval=true)
 	private Set<Parcelle> parcelles=new HashSet<>();
-	
+	@Column(columnDefinition="geometry(Polygon,4326)")
+	private Polygon geom;
 
 }
